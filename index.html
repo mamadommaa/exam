@@ -1,11 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <title>Подсчёт согласных</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 500px;
+      margin: 50px auto;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+    }
+    input, button {
+      padding: 10px;
+      font-size: 16px;
+      width: 100%;
+      margin-top: 10px;
+    }
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
-    <div>Активная разработка</div>
+
+  <h2>Подсчёт количества согласных букв</h2>
+
+  <label for="textInput">Введите строку:</label>
+  <input type="text" id="textInput" placeholder="Например: Привет, мир!" />
+
+  <button onclick="handleCount()">Посчитать согласные</button>
+
+  <div id="result"></div>
+
+  <script>
+    function countConsonants(str) {
+      const consonants = 'бвгджзйклмнпрстфхцчшщbcdfghjklmnpqrstvwxyz';
+      let count = 0;
+
+      for (let char of str.toLowerCase()) {
+        if (consonants.includes(char)) {
+          count++;
+        }
+      }
+
+      return count;
+    }
+
+    function handleCount() {
+      const input = document.getElementById('textInput').value;
+      const result = countConsonants(input);
+      document.getElementById('result').textContent =
+        `Количество согласных букв: ${result}`;
+    }
+  </script>
+
 </body>
 </html>
